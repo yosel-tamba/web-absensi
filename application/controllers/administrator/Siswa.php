@@ -104,47 +104,29 @@ class Siswa extends CI_Controller
         $where = array(
             'id_siswa' => $id_siswa,
         );
-        $where_mahasiswa = array(
-            'id_mahasiswa' => $id_siswa,
-        );
+
         $data = array(
             'judul' => "Siswa"
         );
 
-        $data['sekolah'] = $this->m_crud->get_sekolah()->result();
-        $data['kelas'] = $this->m_crud->get_data('id_kelas', 'kelas')->result();
-        $data['detail'] = $this->m_crud->edit_data($where_mahasiswa, 'detail_mahasiswa')->result();
-        $data['mahasiswa'] = $this->m_join->user_sekolah_kelas_where($where)->result();
+
+        $data['kelas'] = $this->m_crud->get_data('id_kelas', 'tb_kelas')->result();
+        $data['jurusan'] = $this->m_crud->get_data('id_jurusan', 'tb_jurusan')->result();
+        $data['siswa'] = $this->m_crud->edit_data($where, 'tb_siswa')->result();
         $this->load->view('template/sidebar', $data);
         $this->load->view('template/header');
-        $this->load->view('pengguna/mahasiswa/ubah', $data);
+        $this->load->view('siswa/ubah', $data);
         $this->load->view('template/footer');
     }
 
     public function aksi_ubah()
     {
-        $id_mahasiswa = $this->input->post('id_mahasiswa');
-        $nama_mahasiswa = $this->input->post('nama_mahasiswa');
+        $id_siswa = $this->input->post('id_siswa');
+        $id_jurusan = $this->input->post('id_jurusan');
         $id_kelas = $this->input->post('id_kelas');
-        $telepon = $this->input->post('telepon');
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $id_sekolah = $this->input->post('id_sekolah');
-        $nim = $this->input->post('nim');
-        $jurusan = $this->input->post('jurusan');
-        $tanggal_lahir = $this->input->post('tanggal_lahir');
-        $gender = $this->input->post('gender');
-        $tempat_lahir = $this->input->post('tempat_lahir');
-        $asal_universitas = $this->input->post('asal_universitas');
-        $status_ekonomi = $this->input->post('status_ekonomi');
-
-        if ($this->input->post('asal_sekolah') != '') {
-            $asal_sekolah = $this->input->post('asal_sekolah');
-            $asal_sekolah_lain = '';
-        } else {
-            $asal_sekolah = '';
-            $asal_sekolah_lain = $this->input->post('asal_sekolah_lain');
-        }
+        $nama_siswa = $this->input->post('nama_siswa');
+        $nis = $this->input->post('nis');
+        $pin = $this->input->post('pin');
 
         if (isset($_FILES['foto']['name']) && $_FILES['foto']['name'] != '') {
             $nama = str_replace(' ', '_', $nama_mahasiswa);
@@ -170,45 +152,20 @@ class Siswa extends CI_Controller
             $foto = $this->input->post('foto_default');
         }
 
-        $where_detail = [
-            'id_mahasiswa' => $id_mahasiswa
-        ];
-        $where_mahasiswa = [
-            'id_user' => $id_mahasiswa
+        $where = [
+            'id_siswa' => $id_siswa
         ];
 
-        $data_kelas = array(
-            'id_kelas' => $id_kelas,
-            'id_user' => $id_mahasiswa
-        );
-        $this->m_crud->update_data($where_mahasiswa, $data_kelas, 'kelas_user');
-
-        $data_mahasiswa = [
-            'id_user' => $id_mahasiswa,
+        $data = [
             'foto' => $foto,
-            'nama_user' => $nama_mahasiswa,
-            'id_sekolah' => $id_sekolah,
-            'telepon' => $telepon,
-            'username' => $username,
-            'passconf' => $password,
-            'password' => md5($password)
+            'nama_siswa' => $nama_siswa,
+            'id_jurusan' => $id_jurusan,
+            'id_kelas' => $id_kelas,
+            'pin' => $pin,
+            'nis' => $nis
         ];
-        $this->m_crud->update_data($where_mahasiswa, $data_mahasiswa, 'user'); //memasukan data ke database
-
-        $data_detail = [
-            'id_mahasiswa' => $id_mahasiswa,
-            'asal_universitas' => $asal_universitas,
-            'nim' => $nim,
-            'jurusan' => $jurusan,
-            'tanggal_lahir' => $tanggal_lahir,
-            'gender' => $gender,
-            'tempat_lahir' => $tempat_lahir,
-            'asal_sekolah' => $asal_sekolah,
-            'asal_sekolah_lain' => $asal_sekolah_lain,
-            'status_ekonomi' => $status_ekonomi
-        ];
-        $this->m_crud->update_data($where_detail, $data_detail, 'detail_mahasiswa'); //memasukan data ke database
-        redirect(base_url() . 'administrator/data_pengguna/mahasiswa'); //mengalihkan halaman
+        $this->m_crud->update_data($where, $data, 'tb_siswa');
+        redirect(base_url() . 'administrator/siswa'); //mengalihkan halaman
     }
 
     public function hapus($id_siswa)

@@ -171,7 +171,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item <?= $judul == 'Pengguna' ? 'active' : null ?>">
-        <a class="nav-link" href="<?= base_url('administrator/guru') ?>">
+        <a class="nav-link" href="<?= base_url('administrator/pengguna') ?>">
           <i class="fa fa-users" aria-hidden="true"></i>
           <span>Data Pengguna</span></a>
       </li>
@@ -190,13 +190,13 @@
       </li>
 
       <li class="nav-item <?= $judul == 'Kelas' ? 'active' : null ?>">
-        <a class="nav-link" href="<?= base_url('administrator/siswa') ?>">
+        <a class="nav-link" href="<?= base_url('administrator/kelas') ?>">
           <i class="fa fa-user" aria-hidden="true"></i>
           <span>Data Kelas</span></a>
       </li>
 
       <li class="nav-item <?= $judul == 'Laporan' ? 'active' : null ?>">
-        <a class="nav-link" href="<?= base_url('administrator/siswa') ?>">
+        <a class="nav-link" href="<?= base_url('administrator/laporan') ?>">
           <i class="fa fa-user" aria-hidden="true"></i>
           <span>Laporan Kehadiran</span></a>
       </li>
