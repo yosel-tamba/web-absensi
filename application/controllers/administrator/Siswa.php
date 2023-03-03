@@ -63,6 +63,7 @@ class Siswa extends CI_Controller
         $id_kelas = $this->input->post('id_kelas');
         $nama_siswa = $this->input->post('nama_siswa');
         $nis = $this->input->post('nis');
+        $pin = $this->input->post('pin');
 
         if (isset($_FILES['foto']['name']) && $_FILES['foto']['name'] != '') {
             $nama = str_replace(' ', '_', $nama_siswa);
@@ -90,7 +91,8 @@ class Siswa extends CI_Controller
             'nama_siswa' => $nama_siswa,
             'id_jurusan' => $id_jurusan,
             'id_kelas' => $id_kelas,
-            'nis' => $nis,
+            'pin' => $pin,
+            'nis' => $nis
         ];
 
         $this->m_crud->insert_data($data_siswa, 'tb_siswa');

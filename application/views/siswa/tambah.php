@@ -1,11 +1,6 @@
 <!-- Containe Fluid -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= $judul ?></h1>
-    </div>
-
     <!-- Content Row -->
     <div class="row">
 
@@ -38,12 +33,16 @@
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="mb-3">
+                                        <label for="pin" class="form-label">PIN</label>
+                                        <input type="number" class="form-control" id="pin" name="pin" placeholder="Masukkan PIN" autocomplete="off" required>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="nip" class="form-label">NIS</label>
-                                        <input type="number" class="form-control" id="nis" name="nis" placeholder="Masukan NIS" autocomplete="off" required>
+                                        <input type="number" class="form-control" id="nis" name="nis" placeholder="Masukkan NIS" autocomplete="off" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" placeholder="Masukan Nama" autocomplete="off" required>
+                                        <input type="text" class="form-control" id="nama_siswa" name="nama_siswa" placeholder="Masukkan Nama" autocomplete="off" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="id_jurusan" class="form-label">Jurusan</label>
@@ -89,28 +88,30 @@
                                         });
                                     </script>
                                 </div>
-                                <div class="card-footer">
-                                    <?php if ($this->session->userdata('level') == 'Administrator') { ?>
-                                        <a class="btn btn-secondary" href="<?= base_url('administrator/siswa') ?>" role="button">Kembali</a>
-                                    <?php } ?>
-                                    <?php if ($this->session->userdata('level') == 'Guru') { ?>
-                                        <a class="btn btn-secondary" href="<?= base_url('guru/siswa') ?>" role="button">Kembali</a>
-                                    <?php } ?>
-                                    <input type="submit" class="btn btn-primary " value="Simpan Data">
-                                </div>
-                                <?= form_close() ?>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <?php if ($this->session->userdata('level') == 'Administrator') { ?>
+                                <a class="btn btn-secondary" href="<?= base_url('administrator/siswa') ?>" role="button">Kembali</a>
+                            <?php } ?>
+                            <?php if ($this->session->userdata('level') == 'Guru') { ?>
+                                <a class="btn btn-secondary" href="<?= base_url('guru/siswa') ?>" role="button">Kembali</a>
+                            <?php } ?>
+                            <input type="submit" class="btn btn-primary " value="Simpan Data">
+                        </div>
+                        <?= form_close() ?>
                     </div>
                 </div>
-                <!-- End Content Column -->
             </div>
-            <!-- End Content Row -->
         </div>
-        <!-- End Container Fluid -->
-        <script type="text/javascript">
-            var loadFile = function(event) {
-                var output = document.getElementById('output');
-                output.src = URL.createObjectURL(event.target.files[0]);
-            };
-        </script>
+        <!-- End Content Column -->
+    </div>
+    <!-- End Content Row -->
+</div>
+<!-- End Container Fluid -->
+<script type="text/javascript">
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
