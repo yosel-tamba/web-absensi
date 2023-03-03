@@ -6,7 +6,6 @@ class Siswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_crud');
-        $this->load->model('m_join');
         $this->load->model('m_data');
 
         if ($this->session->userdata('status') != "telah_login") {
