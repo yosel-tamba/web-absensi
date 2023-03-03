@@ -16,7 +16,7 @@
             </form>
             <div class="nav-item dropdown no-arrow d-sm-none">
                 <a role="button" aria-haspopup="true" aria-expanded="false">
-                    <h4 class="mt-2 text-dark" style="font-weight: 700;">V-MSL</h4>
+                    <h4 class="mt-2 text-dark" style="font-weight: 700;">Admin</h4>
                 </a>
             </div>
 
@@ -34,7 +34,6 @@
                     <?php if ($this->session->userdata('level') == 'Administrator') { ?>
                         <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"><i class="fas fa-angle-down me-1"></i> <?= $this->session->userdata('nama') ?></span>
-                            <img class="img-profile rounded-circle" src="<?= base_url('assets/images/foto_profil/') . $this->session->userdata('foto') ?>">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -51,7 +50,6 @@
                         <?php if ($this->session->userdata('level') == 'Guru') { ?>
                             <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><i class="fas fa-angle-down"></i> <?= $this->session->userdata('nama') ?></span>
-                                <img class="img-profile rounded-circle" src="<?= base_url('assets/images/foto_profil/') . $this->session->userdata('foto') ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

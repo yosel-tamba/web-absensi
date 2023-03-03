@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Mar 2023 pada 05.20
+-- Waktu pembuatan: 03 Mar 2023 pada 10.12
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.0.19
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `tb_jurusan` (
   `id_jurusan` int(11) NOT NULL,
   `nama_jurusan` varchar(100) NOT NULL,
-  `inisial` char(5) NOT NULL,
+  `inisial` varchar(10) NOT NULL,
   `kaprog` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,11 +39,12 @@ CREATE TABLE `tb_jurusan` (
 --
 
 INSERT INTO `tb_jurusan` (`id_jurusan`, `nama_jurusan`, `inisial`, `kaprog`) VALUES
-(1, 'Rekayasa Perangkat Lunak', '', ''),
+(1, 'Rekayasa Perangkat Lunak', 'RPL', 'Bagus Abdul Karim'),
 (2, 'Teknik Bisnis Sepeda Motor', '', ''),
 (3, 'Teknik Kendaraan Ringan Otomotif', '', ''),
-(4, 'Teknik Audio Video', '', ''),
-(5, 'Desain Pemodelan dan Informasi Bangunan', '', '');
+(4, 'Teknik Audio Video', 'TAV', 'B'),
+(5, 'Desain Pemodelan dan Informasi Bangunan', 'DPIB', 'A'),
+(6, 'Teknik Shitposting', 'TS', 'Dante');
 
 -- --------------------------------------------------------
 
@@ -128,12 +129,10 @@ CREATE TABLE `tb_siswa` (
 
 INSERT INTO `tb_siswa` (`id_siswa`, `pin`, `nis`, `nama_siswa`, `id_jurusan`, `id_kelas`, `foto`) VALUES
 (2, '', '1234567891', 'Jimmy McGill', 1, 9, 'foto.jpg'),
-(6, '', '12313', 'asfas', 4, 35, 'user.png'),
-(7, '', '569484', 'dfadsf', 4, 34, 'user.png'),
 (8, '', '1231212', '3123123', 4, 38, 'user.png'),
 (9, '', '3423423', '4wefsdfsdf', 5, 42, '1726503650-4wefsdfsdf.jpg'),
-(11, '', '34234234', 'gsdgadgadgdg dfgdfgsgadgadg fhkdjsfgsdgsrg', 5, 42, 'user.png'),
-(12, '', '3424', 'sdfsdf', 4, 36, '939385006-sdfsdf.jpg');
+(12, '', '3424', 'sdfsdf', 4, 36, '939385006-sdfsdf.jpg'),
+(14, '235235', '4134513', 'agdgsrhsfh', 4, 34, 'user.png');
 
 -- --------------------------------------------------------
 
@@ -196,7 +195,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_jurusan`
 --
 ALTER TABLE `tb_jurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kelas`
@@ -208,7 +207,7 @@ ALTER TABLE `tb_kelas`
 -- AUTO_INCREMENT untuk tabel `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
