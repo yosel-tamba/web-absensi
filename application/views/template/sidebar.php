@@ -184,7 +184,7 @@
       </li>
 
       <li class="nav-item <?= $judul == 'Jurusan' ? 'active' : null ?>">
-        <a class="nav-link" href="<?= base_url('administrator/siswa') ?>">
+        <a class="nav-link" href="<?= base_url('administrator/jurusan') ?>">
           <i class="fa fa-user" aria-hidden="true"></i>
           <span>Data Jurusan</span></a>
       </li>

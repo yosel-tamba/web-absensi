@@ -79,7 +79,7 @@
                                                     <?php if ($this->session->userdata('level') == "Guru") { ?>
                                                         <td class="text-center">
                                                             <a href="<?= base_url() . 'guru/data_pengguna/mahasiswa/ubah/' . $row->id_siswa; ?>" class="btn btn-warning btn-sm" title="Ubah"><i class="fas fa-pen"></i></a>
-                                                            <a href="+#" data-toggle="modal" data-target="#DeleteDataModal<?= $row->id_siswa ?>" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></a>
+                                                            <a href="s#" data-toggle="modal" data-target="#DeleteDataModal<?= $row->id_siswa ?>" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></a>
                                                         </td>
                                                     <?php } ?>
                                                 </tr>

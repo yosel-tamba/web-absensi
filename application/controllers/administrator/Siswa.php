@@ -86,7 +86,7 @@ class Siswa extends CI_Controller
         } else {
             $foto = $this->input->post('foto_default');
         }
-        $data_siswa = [
+        $data = [
             'foto' => $foto,
             'nama_siswa' => $nama_siswa,
             'id_jurusan' => $id_jurusan,
@@ -95,7 +95,7 @@ class Siswa extends CI_Controller
             'nis' => $nis
         ];
 
-        $this->m_crud->insert_data($data_siswa, 'tb_siswa');
+        $this->m_crud->insert_data($data, 'tb_siswa');
         redirect(base_url() . 'administrator/siswa');
     }
 

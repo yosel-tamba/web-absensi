@@ -64,12 +64,12 @@
                                     FAQ
                                 </a>
                             <?php }  ?>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= base_url('login/keluar') ?>">
-                                    <i class="fas fa-sign-out-alt fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                                </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?= base_url('login/keluar') ?>">
+                                <i class="fas fa-sign-out-alt fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                            </div>
                 </li>
 
             </ul>
