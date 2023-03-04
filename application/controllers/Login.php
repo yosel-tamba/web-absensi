@@ -5,13 +5,12 @@ class Login extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('m_data');
         $this->load->model('m_crud');
     }
 
     public function index()
     {
-        $data['siswa'] = $this->m_data->kehadiran()->result();
+        $data['hadir'] = $this->m_crud->get_data('id_hadir', 'tb_hadir')->result();
         $this->load->view('login', $data);
     }
 
@@ -35,6 +34,7 @@ class Login extends CI_Controller
                     'id' => $data->id_user,
                     'nama' => $data->nama_user,
                     'username' => $data->username,
+                    'password' => $data->passconf,
                     'level' => 'Administrator',
                     'status' => 'telah_login'
                 );
@@ -45,6 +45,7 @@ class Login extends CI_Controller
                     'id' => $data->id_user,
                     'nama' => $data->nama_user,
                     'username' => $data->username,
+                    'password' => $data->passconf,
                     'level' => 'Guru',
                     'status' => 'telah_login'
                 );

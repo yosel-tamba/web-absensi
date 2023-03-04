@@ -9,12 +9,4 @@ class M_data extends CI_Model
 
         return $result;
     }
-
-    public function kehadiran()
-    {
-        $this->db->order_by('id_hadir', 'desc');
-        return $this->db->from('tb_hadir')
-            ->join('tb_siswa', 'tb_siswa.id_siswa = tb_siswa.id_siswa')
-            ->get();
-    }
 }

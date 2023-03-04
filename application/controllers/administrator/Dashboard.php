@@ -5,6 +5,12 @@ class Dashboard extends CI_Controller
     function __construct()
     {
         parent::__construct();
+
+        if ($this->session->userdata('status') != "telah_login") {
+            redirect(base_url() . 'login?alert=belum_login');
+        }
+
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function index()

@@ -10,6 +10,10 @@ class Laporan extends CI_Controller
         $this->load->model('m_crud');
         $this->load->model('m_data');
 
+        if ($this->session->userdata('status') != "telah_login") {
+            redirect(base_url() . 'login?alert=belum_login');
+        }
+        
         date_default_timezone_set('Asia/Jakarta');
     }
 

@@ -16,7 +16,7 @@
             </form>
             <div class="nav-item dropdown no-arrow d-sm-none">
                 <a role="button" aria-haspopup="true" aria-expanded="false">
-                    <h4 class="mt-2 text-dark" style="font-weight: 700;">Admin</h4>
+                    <h4 class="mt-2 text-dark" style="font-weight: 700;"><?= $judul ?></h4>
                 </a>
             </div>
 
@@ -63,7 +63,7 @@
                                 </a>
                             <?php }  ?>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?= base_url('login/keluar') ?>">
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>

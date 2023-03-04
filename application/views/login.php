@@ -58,22 +58,24 @@
                 <tbody>
                   <?php
                   $no = 1;
-                  foreach ($siswa as $row) {
+                  foreach ($hadir as $row) {
                   ?>
                     <tr>
                       <td><?= $no++; ?></td>
-                      <td><img src="<?= base_url('assets/images/foto_profil/') . $row->foto ?>" width="100px" alt=""></td>
-                      <td><?= $row->nama_siswa; ?></td>
-                      <td><?= $row->nis; ?></td>
-                      <td>
+                      <?php
+                      $where = ['id_siswa' => $row->id_siswa];
+                      $data = $this->m_crud->edit_data($where, 'tb_siswa')->result();
+                      foreach ($data as $k) { ?>
+                        <td><img src="<?= base_url('assets/images/foto_profil/') . $k->foto ?>" width="100px" alt=""></td>
+                        <td><?= $k->nama_siswa; ?></td>
+                        <td><?= $k->nis; ?></td>
                         <?php
-                        $where = ['id_kelas' => $row->id_kelas];
-                        $data = $this->m_crud->edit_data($where, 'tb_kelas')->result();
-                        foreach ($data as $k) {
-                          echo $k->nama_kelas;
-                        }
-                        ?>
-                      </td>
+                        $where = ['id_kelas' => $k->id_kelas];
+                        $datas = $this->m_crud->edit_data($where, 'tb_kelas')->result();
+                        foreach ($datas as $data) { ?>
+                          <td><?= $data->nama_kelas; ?></td>
+                        <?php } ?>
+                      <?php } ?>
                       <td><?= $row->jam_masuk; ?></td>
                       <td><?= $row->jam_keluar; ?></td>
                     </tr>
@@ -102,11 +104,11 @@
                     if ($_GET['alert'] == "belum_login") {
                       echo "<div class='alert alert-danger fw-bold text-center'>Anda Harus Login Terlebih Dahulu!</div>";
                     }
-                    if ($_GET['alert'] == "bukan_admin") {
-                      echo "<div class='alert alert-danger fw-bold text-center'>Anda Bukan Administrator</div>";
+                    if ($_GET['alert'] == "logout") {
+                      echo "<div class='alert alert-success fw-bold text-center'>Logout Berhasil</div>";
                     }
-                    if ($_GET['alert'] == "bukan_guru") {
-                      echo "<div class='alert alert-danger fw-bold text-center'>Anda Bukan Guru</div>";
+                    if ($_GET['alert'] == "bukan_administrator") {
+                      echo "<div class='alert alert-danger fw-bold text-center'>Anda Bukan administrator</div>";
                     }
                     if (isset($_GET['alert'])) {
                       if ($_GET['alert'] == "berhasil") {
