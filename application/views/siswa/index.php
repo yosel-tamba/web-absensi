@@ -14,7 +14,10 @@
                         <div class="card-header d-sm-flex align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary">Data Siswa</h6>
                             <?php if ($this->session->userdata('level') == "Administrator") { ?>
-                                <a class="btn btn-primary btn-sm" href="<?= base_url('administrator/siswa/tambah') ?>" title="Tambah"><i class="fas fa-plus me-1"></i> Tambah Data</a>
+                                <div class="d-flex justify-content-end">
+                                    <a class="btn btn-success btn-sm mr-2" href="#" data-toggle="modal" data-target="#UnggahDataModal" title="Unggah"><i class="fa fa-upload"></i> Unggah Data</a>
+                                    <a class="btn btn-primary btn-sm" href="<?= base_url('administrator/siswa/tambah') ?>" title="Tambah"><i class="fas fa-plus me-1"></i> Tambah Data</a>
+                                </div>
                             <?php } ?>
                             <?php if ($this->session->userdata('level') == "Guru") { ?>
                                 <a class="btn btn-primary btn-sm" href="<?= base_url('guru/data_pengguna/mahasiswa/tambah') ?>" title="Tambah"><i class="fas fa-plus me-1"></i> Tambah Data</a>
@@ -160,3 +163,34 @@ foreach ($siswa as $row) {
     </div>
 <?php } ?>
 <!-- akhir delete data modal -->
+
+<!-- Unggah Data Modal-->
+<div class="modal fade" id="UnggahDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Form Unggah Data Jurusan</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <div class="alert alert-info" role="alert">
+                        <h6 class="m-0 font-weight-bold">Untuk mengunggah file Excel, anda harus menggunakan template yang telah disediakan dengan menekan tombol <a class="btn btn-dark btn-sm">Unduh Template</a> agar tidak terjadi kesalahan atau error saat mengunggah.</h6>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="file">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                    Cancel
+                </button>
+                <input type="submit" class="btn btn-success " value="Unggah Data">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- akhir Import data modal -->
