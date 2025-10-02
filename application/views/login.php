@@ -87,30 +87,26 @@
           <div class="card-header d-sm-flex align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-primary">Aktivitas Kehadiran Siswa Terkini</h6>
             <div class="d-flex justify-content-end">
-              <?php if ($hari > 0) { ?>
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <?= form_open('absensi') ?>
-                <div class="input-group input-group-sm flex-nowrap">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="addon-wrapping">PIN</span>
-                  </div>
-                  <input type="text" class="form-control" name="pin" id="pin" aria-describedby="addon-wrapping" placeholder="Nomor PIN" autofocus autocomplete="off">
+              <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+              <?= form_open('absensi') ?>
+              <div class="input-group input-group-sm flex-nowrap">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="addon-wrapping">PIN</span>
                 </div>
-                <?= form_close() ?>
-                <span class="text-danger font-weight-bold">
-                </span>
-                <script>
-                  $(document).ready(function() {
-                    $('#pin').on('input', function() {
-                      if ($(this).val().length == 10) {
-                        $(this).closest('form').submit();
-                      }
-                    });
+                <input type="text" class="form-control" name="pin" id="pin" aria-describedby="addon-wrapping" placeholder="Nomor PIN" autofocus autocomplete="off">
+              </div>
+              <?= form_close() ?>
+              <span class="text-danger font-weight-bold">
+              </span>
+              <script>
+                $(document).ready(function() {
+                  $('#pin').on('input', function() {
+                    if ($(this).val().length == 10) {
+                      $(this).closest('form').submit();
+                    }
                   });
-                </script>
-              <?php } else { ?>
-                <span><i>Hubungi <b>Administrator</b> untuk memulai Absensi Kehadiran</i></span>
-              <?php }  ?>
+                });
+              </script>
             </div>
           </div>
           <div class="card-body px-4">
