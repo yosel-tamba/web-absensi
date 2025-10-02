@@ -72,13 +72,12 @@ class Siswa extends CI_Controller
                 $cek = $this->m_crud->edit_data($where, 'tb_siswa')->num_rows();
                 if ($cek == 0) {
                     if (isset($_FILES['foto']['name']) && $_FILES['foto']['name'] != '') {
-                        $nama = str_replace(' ', '_', $nama_siswa);
 
                         $nama = str_replace(' ', '_', $nama_siswa);
-                        $nama_safe = preg_replace('/[^\p{L}\p{N}_\-]/u', '', $nama); // simpan huruf dan angka Unicode, underscore, dash
+                        $nama_safe = preg_replace('/[^\p{L}\p{N}_\-]/u', '', $nama);
                         if ($nama_safe === '') {
                             $nama_safe = 'user';
-                        } // fallback kalau jadi kosong
+                        }
                         $foto = rand() . "_" . $nama_safe . ".jpg";
 
                         $config['upload_path'] = './assets/images/foto_profil/';
@@ -168,8 +167,14 @@ class Siswa extends CI_Controller
                 $cek = $this->m_data->getSiswa('nis', $id_siswa, $nis)->num_rows();
                 if ($cek == 0) {
                     if (isset($_FILES['foto']['name']) && $_FILES['foto']['name'] != '') {
-                        $nama = str_replace(' ', '_', $nama_siswa . $id_siswa);
-                        $foto = rand() . "_" . $nama . ".jpg";
+                        
+                        $nama = str_replace(' ', '_', $nama_siswa);
+                        $nama_safe = preg_replace('/[^\p{L}\p{N}_\-]/u', '', $nama);
+                        if ($nama_safe === '') {
+                            $nama_safe = 'user';
+                        }
+                        $foto = rand() . "_" . $nama_safe . ".jpg";
+                        
                         $config['upload_path'] = './assets/images/foto_profil/';
                         $config['allowed_types'] = 'jpeg|jpg|png';
                         $config['max_size'] = 3000;
