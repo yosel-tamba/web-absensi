@@ -133,7 +133,8 @@
 
             <!-- Tombol Hari Libur khusus Administrator -->
             <?php if ($this->session->userdata('level') == 'Administrator') : ?>
-              <a class="btn btn-danger btn-sm <?= (empty($hari)) ? 'disabled' : '' ?>"
+              <a id="btnHariLibur"
+                class="btn btn-danger btn-sm <?= (empty($hari)) ? 'disabled' : '' ?>"
                 href="#"
                 data-toggle="modal"
                 data-target="#HariLiburModal"
@@ -143,6 +144,24 @@
             <?php endif; ?>
           </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+          function checkHariLibur() {
+            $.getJSON("<?= base_url('absensi/getStatus') ?>", function(response) {
+              if (response.status === "disabled") {
+                $("#btnHariLibur").addClass("disabled");
+              } else {
+                $("#btnHariLibur").removeClass("disabled");
+              }
+            });
+          }
+
+          // jalankan pertama kali
+          checkHariLibur();
+
+          // cek ulang tiap 3 detik
+          setInterval(checkHariLibur, 3000);
+        </script>
 
         <div class="card-body">
           <?php if (empty($hadir)) { ?>

@@ -73,14 +73,20 @@ class Siswa extends CI_Controller
                 if ($cek == 0) {
                     if (isset($_FILES['foto']['name']) && $_FILES['foto']['name'] != '') {
                         $nama = str_replace(' ', '_', $nama_siswa);
-                        $foto = rand() . "_" . $nama . ".jpg";
+
+                        $nama = str_replace(' ', '_', $nama_siswa);
+                        $nama_safe = preg_replace('/[^\p{L}\p{N}_\-]/u', '', $nama); // simpan huruf dan angka Unicode, underscore, dash
+                        if ($nama_safe === '') {
+                            $nama_safe = 'user';
+                        } // fallback kalau jadi kosong
+                        $foto = rand() . "_" . $nama_safe . ".jpg";
+
                         $config['upload_path'] = './assets/images/foto_profil/';
                         $config['allowed_types'] = 'jpeg|jpg|png';
                         $config['max_size'] = 3000;
                         $config['max_width'] = 2000;
                         $config['max_height'] = 2000;
                         $config['file_name'] = $foto;
-
                         $this->load->library('upload', $config);
                         if (!$this->upload->do_upload('foto')) //jika gagal upload
                         {

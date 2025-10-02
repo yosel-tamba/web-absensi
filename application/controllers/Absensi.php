@@ -58,5 +58,14 @@ class Absensi extends CI_Controller
         }
         redirect(base_url());
     }
+
+    public function getStatus()
+    {
+        // misalnya $hari diambil dari database
+        $hari = $this->db->get_where('hari_libur', ['status' => 1])->row();
+        $status = empty($hari) ? 'disabled' : '';
+        
+        echo json_encode(['status' => $status]);
+    }
     
 }
